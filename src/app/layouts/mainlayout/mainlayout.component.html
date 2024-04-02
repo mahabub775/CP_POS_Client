@@ -1,0 +1,12 @@
+<div  style="display: grid;">
+    <div  *ngIf='IsLoggedIn'>
+        <div class="col-md-11">&nbsp;</div>
+        <div class="col-md-1"><a href="#" (click)="Logout()"><h6 class="card-title">Log out</h6></a> </div>
+    </div>
+    <div *ngIf='!IsLoggedIn'>
+      <app-login (LoginResult)="AfterLogin($event)"></app-login>
+    </div>
+    <div *ngIf='IsLoggedIn' >
+        <router-outlet></router-outlet> 
+    </div>
+  </div>

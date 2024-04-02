@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'CP_POS_Client';
+  title = 'Point Of Sale System';
 }
