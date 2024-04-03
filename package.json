@@ -21,6 +21,7 @@
     "@angular/router": "^17.1.0",
     "@ant-design/icons-angular": "^17.0.0",
     "@auth0/angular-jwt": "^5.2.0",
+    "ag-grid-angular": "^31.2.0",
     "cron-parser": "^4.9.0",
     "d3-drag": "^3.0.0",
     "d3-shape": "^3.2.0",

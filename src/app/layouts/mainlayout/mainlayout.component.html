@@ -4,15 +4,13 @@
       <ul nz-menu nzTheme="dark" nzMode="inline">
         <li nz-submenu nzTitle="Admin" nzIcon="team">
           <ul>
-            <li  nz-menu-item>
-              <a [routerLink]="/users"> <i nz-icon nzType="user" ></i> User </a>
-            </li>
+            <li  nz-menu-item><a [routerLink]="'users'"> <i nz-icon nzType="user" ></i> User </a></li>
           </ul>
         </li>
         
         <li nz-submenu nzTitle="Basic Operation" nzIcon="tablet">
           <ul>
-            <li nz-menu-item><i nz-icon nzType="contacts"></i> Contractor</li>
+            <li nz-menu-item> <a [routerLink]="'contractors'"> <i nz-icon nzType="contacts"></i> Contractor </a></li>
             <li nz-menu-item><i nz-icon nzType="ordered-list"></i> Product Category</li>
             <li nz-menu-item><i nz-icon nzType="gift"></i> Product</li>
             <li nz-menu-item><i nz-icon nzType="experiment"></i> Measurements</li>
