@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import {AuthService} from '../../core/services/auth.services'
-import { MainlayoutComponent } from './mainlayout.component';
-import { AppComponent } from '../../app.component';
-import { LoginComponent } from '../../login.component';
+
+import { UsersComponent } from '../../modules/admin/users.component';
+import { ContractorsComponent } from '../../modules/basic-operation/contractors.component';
 
 
 const routes: Routes = [
   { 
-    
-    path: 'logout', component: AppComponent, loadChildren: () => import('../../app-routing.module').then(m => m.AppRoutingModule) },
-  //{ path: 'example', component: ExamplelandingComponent, loadChildren: () => import('./example/example.module').then(m => m.ExampleModule), canActivate:[AuthService] }
+    path: 'users', component: UsersComponent, loadChildren: () => import('../../modules/admin/admin.module').then(m => m.AdminModule), canActivate:[AuthService] },
+  { path: 'contractors', component: ContractorsComponent, loadChildren: () => import('../../modules/basic-operation/basic-operation.module').then(m => m.BasicOperationModule), canActivate:[AuthService] },
   //{ path: 'example', component: ExamplelandingComponent, loadChildren: () => import('./example/example.module').then(m => m.ExampleModule), canActivate:[AuthService] }
   
 ];
