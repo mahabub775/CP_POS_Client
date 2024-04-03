@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-
+import {AuthService} from './core/services/auth.services';
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
   
   @Output() public LoginResult = new EventEmitter();
   UserName="Abdullah3652"; Password = "Kc987#2"; Message = "";
-  
-  constructor(private _httpclient:HttpClient) {
+   
+  constructor(private _httpclient:HttpClient, private Authservice:  AuthService ) {
     //this.UserName="Admin"; this.Password ="123"; 
     this.Message = "";
    
@@ -46,10 +46,12 @@ export class LoginComponent implements OnInit {
   Login()
   {
 
+    console.log(this.Authservice.rootURI);
+
        if(this.UserName!='' && this.Password!='')
        {
         var oLoginObject  = {userName:this.UserName, password:this.Password}; 
-        this._httpclient.post('https://localhost:7164/api/Auth/Login',oLoginObject).subscribe(respons =>{
+        this._httpclient.post(this.Authservice.rootURI+'/Auth/Login',oLoginObject).subscribe(respons =>{
           const token = (<any>respons).token;
           localStorage.setItem('jwt',token);
           this.LoginResult.emit("sucess");

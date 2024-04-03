@@ -11,8 +11,8 @@ export class AuthService implements CanActivate {
 
  // constructor() { }
 
- readonly rootURI =  'https://localhost:7289/api'; 
-  constructor(private Router:Router, private jwthelper:JwtHelperService) 
+ readonly rootURI =  'https://localhost:7164/api'; 
+  constructor( private  Router :Router,  public  jwthelper  :JwtHelperService  ) 
   { 
   }
 
