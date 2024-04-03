@@ -6,11 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { MainlayoutRoutingModule } from './mainlayout-routing.module';
 import { MainlayoutComponent } from './mainlayout.component';
-
 import { NzIconModule } from 'ng-zorro-antd/icon';
-
-
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import en from '@angular/common/locales/en';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
@@ -45,8 +41,7 @@ const childicons: IconDefinition[] = [MenuFoldOutline,  MenuUnfoldOutline, UserO
     HttpClientJsonpModule,
     ReactiveFormsModule,
     NgZorroControlsdModule,
-    // BrowserAnimationsModule,
-    //
+
     ScrollingModule,
     DragDropModule 
   ],
