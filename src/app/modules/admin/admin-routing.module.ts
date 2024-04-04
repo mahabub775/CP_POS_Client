@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
+import { UsersComponent } from './users.component';
+import { UserregistrationComponent } from './userregistration.component';
+import {AuthService} from '../../core/services/auth.services'
+const routes: Routes = [
+  //{  path: '', component: UsersComponent,  canActivate:[AuthService] },
+  {  path: 'users', component: UsersComponent,  canActivate:[AuthService] },
+  {  path: 'user/:id', component: UserregistrationComponent,  canActivate:[AuthService] },
+ 
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

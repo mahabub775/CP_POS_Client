@@ -3,11 +3,13 @@ import { User } from '../../models/User';
 import {AuthService} from '../../core/services/auth.services';
 import {UserService} from '../../services/user.service';
 import { HttpClient } from "@angular/common/http";
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-users',
   template: `
-  <button nz-button (click)="NewUser()" nzType="primary">New</button>
+  <button nz-button  (click)="NewUser('11')" nzType="primary">New</button>
     <br/>
   <nz-table #basicTable [nzData]="listOfData">
   <thead>
@@ -40,54 +42,65 @@ import { HttpClient } from "@angular/common/http";
 export class UsersComponent {
 
 
-  // "UserName" :"abdullah785",
-  // "name": "Abdullah Al Mamun",
-  // "email": "abdullah_mamun@gmail.com",
-  // "phoneNumber": "01775143005",
-  //   "address":"mohammadpur",
-  // "password": "Cd12345#"
   httpOptions  =<any> "";
   listOfData: User[] = [
     { userId : 'asd45452s5d', name: 'abdiu',  username: 'abdulla', email:'mahabub775@d',phoneNumber: '1254664744', address: 'New York No. 1 Lake Park' , roleNames:[]}
    ];
 
-  constructor( private _httpclient:HttpClient, private Auth:  AuthService ){
+  constructor( private _httpclient:HttpClient, private router: Router, private Auth:  AuthService,  private UserService:  UserService ){
     this.httpOptions = { headers:this.Auth.CurstomHeader() };
     this.onGridReady();
   }
 
   onGridReady() {
-     this._httpclient.get(this.Auth.rootURI+'/User/Gets',this.httpOptions ).subscribe(respons =>{
-      debugger;
-      this.listOfData =(<any>respons)
-    },err=>{
-      debugger;
-      console.log(err);
-      alert(err.statusText); 
-    }
+
+    this.UserService.Gets().subscribe(
+      ( data: any) => {
+        this.listOfData = data;
+      },
+      error => {
+        console.error('Error fetching resources:', error);
+      }
     );
+
+
+
+    //  this._httpclient.get(this.Auth.rootURI+'/User/Gets',this.httpOptions ).subscribe(respons =>{
+    //   debugger;
+    //   this.listOfData =(<any>respons)
+    // },err=>{
+    //   debugger;
+    //   console.log(err);
+    //   alert(err.statusText); 
+    // }
+    // );
       
     }
 
   
   
 
-  NewUser(){
-
+  NewUser(id :string){  
+      
+    this.router.navigate(['/admin/user', id]);
   }
 
-  deleteRow(userId:string){
-
+  deleteRow(userId:string) :void  {
+    this.UserService.Delete(userId).subscribe(
+      () => {
+        //console.log('User deleted successfully');
+        // Optionally, update user list or show a success message
+        this.listOfData = this.listOfData.filter(d => d.userId !== userId);
+      },
+      error => {
+        console.error('Error deleting user:', error);
+        // Handle error, e.g., display error message to user
+      }
+    );
   }
 
   Edit(userId:string){
-
+    this.router.navigate(['/user', userId]);
   }
 
 }
-// interface Person {
-//   key: string;
-//   name: string;
-//   age: number;
-//   address: string;
-// }

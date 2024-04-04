@@ -14,15 +14,15 @@ export class CommonService {
 
 
 //#region  
-GetsBrand( ) {
+Gets() {
   debugger;
   return this.http.get(this.rootURI+`/Common/GetsBrand`);
 }
 
-SaveBrand(obj: any) {
+Save(obj: any) {
   return this.http.post(this.rootURI+"/Common/SaveBrand", obj, { observe: 'body' });
 }
-DeleteBrand(Id: any) {
+Delete(Id: any) {
   return this.http.get(this.rootURI+`/Common/DeleteBrand/${Id}`);
 }
 //#endregion
