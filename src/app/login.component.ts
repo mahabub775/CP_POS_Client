@@ -118,27 +118,4 @@ export class LoginComponent implements OnInit {
   }
 
 
-  Login()
-  {
-
-    //console.log(this.Authservice.rootURI);
-
-       if(this.UserName!='' && this.Password!='')
-       {
-        var oLoginObject  = {userName:this.UserName, password:this.Password}; 
-        this._httpclient.post(this.Authservice.rootURI+'/Auth/Login',oLoginObject).subscribe(respons =>{
-          const token = (<any>respons).token;
-          localStorage.setItem('jwt',token);
-          this.LoginResult.emit("sucess");
-        },err=>{
-          debugger;
-          console.log(err);
-          this.Message = err.statusText; 
-        }
-        );
-      
-       }else{
-           this.Message="Pelase Type UserName & Password, And Try Again."
-       }
-  }
 }
