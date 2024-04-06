@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {AuthService} from "../core/services/auth.services"
 import { User } from '../models/User';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,21 +22,24 @@ Gets() {
   return this.http.get<User[]>(this.rootURI+`/`+this.controllerName +`/Gets`, this.httpOptions);
 }
 
-// Gets( ) {
-//   debugger;
-//   return this.http.get(this.rootURI+`/`+this.controllerName +`/Gets`);
 
-// }
+
 Get( Id:any) {
   debugger;
-  return this.http.get(this.rootURI+`/`+this.controllerName +`/Get/${Id}`, this.httpOptions);
-}
-
-Save(obj: any) {
-  return this.http.post(this.rootURI+`/`+this.controllerName +`/SaveBrand`, obj, { observe: 'body' });
+  return this.http.get(this.rootURI+`/`+this.controllerName +`/Get?Userid=${Id}`, this.httpOptions);
 }
 Delete(Id: any) {
-  return this.http.get(this.rootURI+`/`+this.controllerName +`/Delete/${Id}`);
+  return this.http.delete(this.rootURI+`/`+this.controllerName +`/Delete?Userid=${Id}`,  this.httpOptions);
 }
+//
+Registration(obj: any) {
+  return this.http.post<any>(this.rootURI+`/`+this.controllerName+`/Registration`, obj, this.httpOptions);
+  
+}
+ 
+Updateuser(obj: any) {
+  return this.http.post(this.rootURI+`/`+this.controllerName +`/UpdateUser`,  obj,  this.httpOptions);
+}
+
 //#endregion
 }

@@ -13,7 +13,7 @@ import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { IconDefinition, IconModule } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 
-
+import { AdminModule } from '../../modules/admin/admin.module';
 import { NgZorroControlsdModule  } from '../../ng.zorro.controls.module';
 
 registerLocaleData(en);
@@ -31,6 +31,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
   imports: [
     
     CommonModule,
+    
     MainlayoutRoutingModule,
     FormsModule,
     ReactiveFormsModule,

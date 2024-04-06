@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {AuthService} from "../core/services/auth.services"
+import { NzMessageService } from 'ng-zorro-antd/message';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,22 +9,32 @@ export class CommonService {
 
   
  private rootURI = '';
-  constructor(private http: HttpClient, private AuthService:AuthService) { 
+  constructor(private message: NzMessageService, private http: HttpClient, private AuthService:AuthService) { 
     this.rootURI = AuthService.rootURI;
   }
 
-
-//#region  
-Gets() {
-  debugger;
-  return this.http.get(this.rootURI+`/Common/GetsBrand`);
+  //#region  Message show
+SaveMessage(){
+  this.message.create('success', `Sucessfully Data Saved `);
 }
 
-Save(obj: any) {
-  return this.http.post(this.rootURI+"/Common/SaveBrand", obj, { observe: 'body' });
+WaringMessage(sMessage:string){
+  this.message.create('warning', sMessage);
 }
-Delete(Id: any) {
-  return this.http.get(this.rootURI+`/Common/DeleteBrand/${Id}`);
+
+ErrorMessage(sErrorMessage:string){
+  this.message.create('error', sErrorMessage);
 }
 //#endregion
+
+//#region load indicator
+ActionLoading(Message:string): void {
+  const id = this.message.loading(Message, { nzDuration: 0 }).messageId;
+  setTimeout(() => {
+    this.message.remove(id);
+  }, 2500);
+}
+//#endregion
+
+
 }

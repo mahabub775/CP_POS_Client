@@ -4,9 +4,9 @@ import { MainlayoutComponent } from './layouts/mainlayout/mainlayout.component';
 import { LoginComponent } from './login.component';
 import {AuthService} from './core/services/auth.services'
 import { AppComponent } from './app.component';
-const routes: Routes = [   { path: '',   component:AppComponent },  
-  { path: 'mainlayout',   component:MainlayoutComponent , 
-  loadChildren: () => import('./layouts/mainlayout/mainlayout.module').then(m => m.MainlayoutModule)},  
+const routes: Routes = [ 
+  { path: '',   component:AppComponent },  
+  { path: 'mainlayout',   component:MainlayoutComponent ,   children:[ {path:'',loadChildren: () => import('./layouts/mainlayout/mainlayout.module').then(m => m.MainlayoutModule) }]  },  
   
   // {path: 'admin', component: AdminlayoutComponent, loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
 ];

@@ -3,13 +3,13 @@ import { User } from '../../models/User';
 import {AuthService} from '../../core/services/auth.services';
 import {UserService} from '../../services/user.service';
 import { HttpClient } from "@angular/common/http";
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
   selector: 'app-users',
   template: `
-  <button nz-button  (click)="NewUser('11')" nzType="primary">New</button>
+  <button nz-button   (click)="NewUser()" nzType="primary">New</button>
     <br/>
   <nz-table #basicTable [nzData]="listOfData">
   <thead>
@@ -36,6 +36,7 @@ import { Router } from '@angular/router';
     </tr>
   </tbody>
 </nz-table>
+
   `,
   styles: ``
 })
@@ -47,7 +48,7 @@ export class UsersComponent {
     { userId : 'asd45452s5d', name: 'abdiu',  username: 'abdulla', email:'mahabub775@d',phoneNumber: '1254664744', address: 'New York No. 1 Lake Park' , roleNames:[]}
    ];
 
-  constructor( private _httpclient:HttpClient, private router: Router, private Auth:  AuthService,  private UserService:  UserService ){
+  constructor( private _httpclient:HttpClient, private router: Router, private Auth:  AuthService,  private UserService:  UserService,private ar: ActivatedRoute ){
     this.httpOptions = { headers:this.Auth.CurstomHeader() };
     this.onGridReady();
   }
@@ -80,9 +81,15 @@ export class UsersComponent {
   
   
 
-  NewUser(id :string){  
-      
-    this.router.navigate(['/admin/user', id]);
+  NewUser(){  
+    //this.router.navigate(['/user', id]);
+    
+    this.router.navigate(['/mainlayout/admin/userreg']);
+    
+    //this.router.navigate(['test']);
+    console.log(this.router.url);
+    
+    
   }
 
   deleteRow(userId:string) :void  {
@@ -100,7 +107,8 @@ export class UsersComponent {
   }
 
   Edit(userId:string){
-    this.router.navigate(['/user', userId]);
+    //this.router.navigate(['/user', userId]);
+    this.router.navigate(['/mainlayout/admin/user',userId]);
   }
 
 }

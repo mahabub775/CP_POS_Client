@@ -23,6 +23,7 @@ import { LoginComponent } from './login.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgZorroControlsdModule  } from './ng.zorro.controls.module';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 registerLocaleData(en);
 
@@ -53,7 +54,7 @@ return localStorage.getItem("jwt");
     NzIconModule,
      NzButtonModule,
      NgZorroControlsdModule,
-    
+     NzSpinModule,
     //AgGridModule,
     JwtModule.forRoot({
       config:{

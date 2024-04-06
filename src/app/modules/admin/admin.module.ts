@@ -14,6 +14,7 @@ import { NgZorroControlsdModule  } from '../../ng.zorro.controls.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users.component';
 import { UserregistrationComponent } from './userregistration.component';
+import { UserComponent } from './user.component';
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
@@ -25,7 +26,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 @NgModule({
   declarations: [
     UsersComponent,
-    UserregistrationComponent
+    UserregistrationComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule,
+    
     HttpClientJsonpModule,
     ReactiveFormsModule,
     NgZorroControlsdModule,

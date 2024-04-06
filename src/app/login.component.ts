@@ -11,6 +11,8 @@ import { HttpClient } from "@angular/common/http";
   <div fxLayoutAlign="center center">
   <h2 nz-typography> Login </h2>
   </div>
+  <nz-spin [nzSpinning]="isLoading">
+  </nz-spin>
   <nz-form-item>
     <nz-form-control nzErrorTip="Please input your username!">
       <nz-input-group nzPrefixIcon="user">
@@ -19,9 +21,9 @@ import { HttpClient } from "@angular/common/http";
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control nzErrorTip="Please input your Password!">
+    <nz-form-control nzErrorTip="Please input your Password, minimum 3 !">
       <nz-input-group nzPrefixIcon="lock">
-        <input type="password" nz-input formControlName="password"  minlength="6" placeholder="Password" />
+        <input type="password" nz-input formControlName="password"  minlength="3" placeholder="Password" />
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
@@ -72,7 +74,7 @@ export class LoginComponent implements OnInit {
     remember: FormControl<boolean>;
   }>;
 
-
+  isLoading: boolean = false;
   UserName="Abdullah3652"; Password = "Kc987#2"; Message = "";
    
   constructor(private fb: NonNullableFormBuilder,  private _httpclient:HttpClient, private Authservice:  AuthService ) {
@@ -95,10 +97,12 @@ export class LoginComponent implements OnInit {
     if (this.validateForm.valid) 
     {
       //console.log('submit', this.validateForm.value);
+      this.isLoading = true;
       var oLoginObject  = {userName:this.validateForm.value.userName, password:this.validateForm.value.password}; 
       this._httpclient.post(this.Authservice.rootURI+'/Auth/Login',oLoginObject).subscribe(respons =>{
         const token = (<any>respons).token;
         localStorage.setItem('jwt',token);
+        this.isLoading = false;
         this.LoginResult.emit("sucess");
       },err=>{
         debugger;
