@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AuthService} from '../../core/services/auth.services'
 import { UsersComponent } from '../../modules/admin/users.component';
+import { ChangePasswordComponent } from './change-password.component';
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
     ] },   
     
   { path: 'basic',  loadChildren: () => import('../../modules/basic-operation/basic-operation.module').then(m => m.BasicOperationModule), canActivate:[AuthService] },
+  { path: 'changepass', component:ChangePasswordComponent , canActivate:[AuthService] },
 
 
   //{ path: 'example', component: ExamplelandingComponent, loadChildren: () => import('./example/example.module').then(m => m.ExampleModule), canActivate:[AuthService] }

@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { MainlayoutRoutingModule } from './mainlayout-routing.module';
 import { MainlayoutComponent } from './mainlayout.component';
+import { ChangePasswordComponent } from './change-password.component';
 
 import en from '@angular/common/locales/en';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
@@ -27,6 +28,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 @NgModule({
   declarations: [
     MainlayoutComponent,
+    ChangePasswordComponent
   ],
   imports: [
     

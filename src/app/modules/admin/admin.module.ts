@@ -15,7 +15,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users.component';
 import { UserregistrationComponent } from './userregistration.component';
 import { UserComponent } from './user.component';
-import { ChangePasswordComponent } from './change-password.component';
+import { ChangePasswordComponent } from '../../layouts/mainlayout/change-password.component';
 import { NzFormModule } from 'ng-zorro-antd/form';
 registerLocaleData(en);
 

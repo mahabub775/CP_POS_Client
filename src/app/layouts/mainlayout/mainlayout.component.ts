@@ -77,7 +77,8 @@ Logout=()=>{
 }
 
 changePassword =()=>{
-  alert("works");
+  
+  this._router.navigate(['/changepass']);
 }
 
 }
