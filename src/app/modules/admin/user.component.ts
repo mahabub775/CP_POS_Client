@@ -23,7 +23,7 @@ import { AuthService } from '../../core/services/auth.services';
 
   <nz-form-item>
   <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="username"      nzRequired      nzTooltipTitle="What do you want other to call you"    >
-   <span>user Name</span>
+   <span>User Name</span>
   </nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your username!">
     <input nz-input id="username" formControlName="username" />
@@ -57,6 +57,15 @@ import { AuthService } from '../../core/services/auth.services';
     </nz-form-control>
   </nz-form-item>
 
+  <nz-form-item>
+  <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="address"   >
+   <span>Address</span>
+  </nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your Address!">
+    <input nz-input id="address" formControlName="address" />
+  </nz-form-control>
+</nz-form-item>
+
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">update</button>
@@ -85,25 +94,26 @@ export class UserComponent  {
   userid:any;
   private User : any;
   validateForm: FormGroup<{
+    userId: FormControl<string>;
     email: FormControl<string>;
-
     name: FormControl<string>;
     username: FormControl<string>;
     phoneNumberPrefix: FormControl<'+88'>;
     phoneNumber: FormControl<string>;
-
+    address: FormControl<string>;
   }>;
   httpOptions  =<any> "";
    constructor(private fb: NonNullableFormBuilder , private _httpclient:HttpClient,  private location: Location,   private Auth:  AuthService, private UserService:UserService, private CommonService: CommonService, private ar: ActivatedRoute) {
    
     this.httpOptions = { headers:this.Auth.CurstomHeader() };
     this.validateForm = this.fb.group({
+      userId:'',
       email: ['', [Validators.email, Validators.required]],
-
       name: ['', [Validators.required]],
       username: ['', [Validators.required]],
       phoneNumberPrefix: '+88' as '+88',
-      phoneNumber: ['', [Validators.required]]
+      phoneNumber: ['', [Validators.required]],
+      address:''
     });
 
     this.userid =   this.ar.snapshot.paramMap.get('id');
@@ -114,13 +124,16 @@ export class UserComponent  {
           this.User=r as any;
           console.log(this.User);
           this.validateForm = this.fb.group({
+            userId: [this.User.userId],
             email: [this.User.email, [Validators.email, Validators.required]],
-       
             name: [this.User.name, [Validators.required]],
             username: [this.User.userName, [Validators.required]],
             phoneNumberPrefix: '+88' as '+88',
-            phoneNumber: [this.User.phoneNumber, [Validators.required]]
+            phoneNumber: [this.User.phoneNumber, [Validators.required]],
+            address: [this.User.address], 
           });
+
+        
 
         });
     }
@@ -144,12 +157,12 @@ export class UserComponent  {
       console.log('submit', this.validateForm.value);
       var oFormvalue = this.validateForm.value;
       var oUser = { 
-           
+           Id:this.userid,
            name: oFormvalue.name,
            userName: oFormvalue.username, 
            email:oFormvalue.email,
            phoneNumber:oFormvalue.phoneNumber,
-           address:''
+           address:oFormvalue.address,
          }
 
 

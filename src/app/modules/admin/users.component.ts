@@ -30,7 +30,7 @@ import { Router, ActivatedRoute } from '@angular/router';
       <td>{{ data.phoneNumber }}</td>
       <td>{{ data.address }}</td>
       <td>
-        <a (click)="Edit(data.userId)">Edit</a>&nbsp;
+        <a (click)="Edit(data.userId)">Edit</a>&nbsp;&nbsp;&nbsp;
         <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.userId)">Delete</a>
       </td>
     </tr>

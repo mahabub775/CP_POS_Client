@@ -23,8 +23,8 @@ import { AuthService } from '../../core/services/auth.services';
   </nz-form-item>
 
   <nz-form-item>
-  <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="username"      nzRequired      nzTooltipTitle="What do you want other to call you"    >
-   <span>user Name</span>
+  <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="username"      nzRequired      nzTooltipTitle="Provide short"    >
+   <span>User Name</span>
   </nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your username!">
     <input nz-input id="username" formControlName="username" />
@@ -39,7 +39,7 @@ import { AuthService } from '../../core/services/auth.services';
   </nz-form-item>
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
-    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password!">
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your password minimum 3 character!">
       <input
         nz-input
         type="password"
@@ -84,6 +84,15 @@ import { AuthService } from '../../core/services/auth.services';
     </nz-form-control>
   </nz-form-item>
 
+  <nz-form-item>
+  <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="address"             >
+   <span>Address</span>
+  </nz-form-label>
+  <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your Address!">
+    <input nz-input id="address" formControlName="address" />
+  </nz-form-control>
+</nz-form-item>
+
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">Register</button>
@@ -112,7 +121,7 @@ export class UserregistrationComponent  {
   userid:any;
   private User : any;
   validateForm: FormGroup<{
-    userId:FormControl<string>;
+    Id:FormControl<string>;
     email: FormControl<string>;
     password: FormControl<string>;
     checkPassword: FormControl<string>;
@@ -120,20 +129,21 @@ export class UserregistrationComponent  {
     username: FormControl<string>;
     phoneNumberPrefix: FormControl<'+88'>;
     phoneNumber: FormControl<string>;
-
+    address: FormControl<string>;
   }>;
   httpOptions  =<any> "";
    constructor(private fb: NonNullableFormBuilder, private _httpclient:HttpClient,  private Auth:  AuthService, private location: Location,  private UserService:UserService, private CommonService:CommonService,  private ar: ActivatedRoute) {
     this.httpOptions = { headers:this.Auth.CurstomHeader() };
     this.validateForm = this.fb.group({
-      userId:'',
+      Id:'',
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]],
       checkPassword: ['', [Validators.required, this.confirmationValidator]],
       name: ['', [Validators.required]],
       username: ['', [Validators.required]],
       phoneNumberPrefix: '+88' as '+88',
-      phoneNumber: ['', [Validators.required]]
+      phoneNumber: ['', [Validators.required]],
+      address:''
     });
   }
 
@@ -148,8 +158,7 @@ export class UserregistrationComponent  {
   submitForm(): void {
     if (this.validateForm.valid) 
     {
-      
-      
+            
       var oFormvalue = this.validateForm.value;
        var oUser = { 
             password : oFormvalue.password,    
@@ -157,7 +166,7 @@ export class UserregistrationComponent  {
             userName: oFormvalue.username, 
             email:oFormvalue.email,
             phoneNumber:oFormvalue.phoneNumber,
-            address:''
+            address:oFormvalue.address
           }
 
           console.log(oUser);
