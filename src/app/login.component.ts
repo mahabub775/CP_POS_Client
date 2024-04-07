@@ -102,6 +102,9 @@ export class LoginComponent implements OnInit {
       this._httpclient.post(this.Authservice.rootURI+'/Auth/Login',oLoginObject).subscribe(respons =>{
         const token = (<any>respons).token;
         localStorage.setItem('jwt',token);
+        debugger;
+        let logininfo =   { user: (<any>respons).user, userRoles : (<any>respons).userRoles};
+        localStorage.setItem('logininfo',JSON.stringify(logininfo));
         this.isLoading = false;
         this.LoginResult.emit("sucess");
       },err=>{

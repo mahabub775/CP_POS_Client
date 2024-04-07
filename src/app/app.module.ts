@@ -24,6 +24,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgZorroControlsdModule  } from './ng.zorro.controls.module';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 registerLocaleData(en);
 
@@ -42,6 +44,8 @@ return localStorage.getItem("jwt");
   ],
   imports: [
     CommonModule,
+    NzDropDownModule,
+    NzMenuModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

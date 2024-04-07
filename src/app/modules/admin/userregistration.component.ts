@@ -173,7 +173,7 @@ export class UserregistrationComponent  {
 
           this._httpclient.post<any>(this.Auth.rootURI +'/user/Registration', oUser, this.httpOptions).subscribe(data => {
         
-            this.CommonService.SaveMessage();
+            this.CommonService.SaveMessage(`Sucessfully Data Saved `);
             this.location.back();
         // Handle success
         console.log(data);

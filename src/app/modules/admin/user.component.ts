@@ -3,10 +3,11 @@ import { ActivatedRoute,Router } from '@angular/router';
 import {  AbstractControl,  FormControl,  FormGroup,  NonNullableFormBuilder,  ValidatorFn,  Validators} from '@angular/forms';
 import {CommonService} from '../../services/common.services';
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 import { User } from '../../models/User';
 import {UserService} from '../../services/user.service';
-import { HttpClient } from '@angular/common/http';
+
 import { AuthService } from '../../core/services/auth.services';
 @Component({
   selector: 'app-test',
@@ -168,7 +169,7 @@ export class UserComponent  {
 
       this._httpclient.put<any>(this.Auth.rootURI +'/user/Updateuser', oUser, this.httpOptions).subscribe(data => {
         
-        this.CommonService.SaveMessage();
+        this.CommonService.SaveMessage(`Sucessfully Updated`);
         this.location.back();
     // Handle success
     console.log(data);

@@ -14,8 +14,8 @@ export class CommonService {
   }
 
   //#region  Message show
-SaveMessage(){
-  this.message.create('success', `Sucessfully Data Saved `);
+SaveMessage(sMessage:string){
+  this.message.create('success', sMessage );
 }
 
 WaringMessage(sMessage:string){

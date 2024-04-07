@@ -13,11 +13,9 @@ export class AppComponent {
 
   public IsLoggedIn = false;
   constructor(private _router: Router, private jwthelper:JwtHelperService) {
-    debugger;
+   // debugger;
     this.IsLoggedIn = this.checkIsAuthnticated();
-    // if(this.IsLoggedIn==false){
-    //   document.getElementById("divlogout").style.display = 'none';
-    // }
+
   }
 
 

@@ -40,8 +40,22 @@
           [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
           (click)="isCollapsed = !isCollapsed"
         ></span>
-        <span nz-icon nzType="logout" (click)="Logout()" nzTheme="outline"></span>
-      <!-- <span><a href="#" (click)="Logout()"></a>Logout</span>   -->
+        <nz-button-group>
+          <button nz-button>{{username}}</button>
+          <button nz-button nz-dropdown [nzDropdownMenu]="menu2" nzPlacement="bottomRight">
+            <span nz-icon nzType="user"></span>
+          </button>
+        </nz-button-group>
+        <nz-dropdown-menu #menu2="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item ><a (click)="changePassword()" > <i nz-icon nzType="edit" ></i> Change Password</a></li>
+            <li nz-menu-item><a (click)="Logout()" > <i nz-icon nzType="logout" ></i> Log Out </a></li>
+          </ul>
+        </nz-dropdown-menu>
+
+        <!-- <span nz-icon nzType="logout" (click)="Logout()" nzTheme="outline"></span> -->
+      
+
       </nz-header>
       <nz-content>
         <nz-breadcrumb>
@@ -57,11 +71,6 @@
     </nz-layout>
   </nz-layout>
 
-<!-- <div  style="display: grid;">
-    <div >
-        <div class="col-md-11">&nbsp;</div>
-        <div class="col-md-1"><a href="#" (click)="Logout()"><h6 class="card-title">Log out</h6></a> </div>
-    </div>
-  </div> -->
+
 
   

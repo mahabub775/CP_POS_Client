@@ -12,6 +12,7 @@ export class AuthService implements CanActivate {
  // constructor() { }
 
  readonly rootURI =  'https://localhost:7164/api'; 
+ oLoggedInUser:any;
   constructor( private  Router :Router,  public  jwthelper  :JwtHelperService  ) 
   { 
   }
@@ -35,6 +36,12 @@ export class AuthService implements CanActivate {
     var headers_object = new HttpHeaders({  'Content-Type': 'application/json',  'Authorization': "Bearer "+t  });
     
     return  headers_object
+  }
+  
+  GetuserLoginInfo(){
+    //JSON.stringify(logininfo)
+    this.oLoggedInUser= localStorage.getItem("logininfo");
+     return this.oLoggedInUser?  JSON.parse(this.oLoggedInUser):null;
   }
 // //#region  Login
 // Login(oUser: any  ) {

@@ -1,6 +1,7 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import {JwtHelperService} from'@auth0/angular-jwt'
 import { Router } from '@angular/router';
+import {AuthService} from '../../core/services/auth.services';
 
 @Component({
   selector: 'app-mainlayout',
@@ -42,6 +43,11 @@ import { Router } from '@angular/router';
     min-height: 360px;
   }
 
+  nz-button-group {
+    margin: 0 8px 8px 0;
+  }
+
+
   nz-footer {
     text-align: center;
   } `
@@ -50,27 +56,28 @@ export class MainlayoutComponent implements  AfterViewInit {
 
   isCollapsed = false;
   public IsLoggedIn = false;
-  constructor(private _router: Router, private jwthelper:JwtHelperService) {
+  private logininfo:any;  username:string = "";
+  constructor(private _router: Router, private Auth : AuthService, private jwthelper:JwtHelperService) {
     debugger;
-    //this.IsLoggedIn = this.checkIsAuthnticated();
-    // if(this.IsLoggedIn==false){
-    //   document.getElementById("divlogout").style.display = 'none';
-    // }
+    this.logininfo = this.Auth.GetuserLoginInfo();
+    this.username = this.logininfo!=null?  this.logininfo.user.name:"";
   }
 
   ngAfterViewInit(): void {
-   
-    // setTimeout(() => {
-    //   this.IsLoggedIn = false;  
-    // }, 1000);
+    //this.username = "kdam"; //this.logininfo.user.username;
+    
   }
 
 Logout=()=>{
   //debugger;
   //alert("It works");
-  localStorage.removeItem("jwt") 
+  localStorage.removeItem("jwt");
+  localStorage.removeItem("logininfo");
   this._router.navigate(['/']);
 }
 
+changePassword =()=>{
+  alert("works");
+}
 
 }
