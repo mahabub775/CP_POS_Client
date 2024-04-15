@@ -32,13 +32,14 @@ Delete(Id: any) {
   return this.http.delete(this.rootURI+`/`+this.controllerName +`/Delete?Userid=${Id}`,  this.httpOptions);
 }
 //
-Registration(obj: any) {
+Registration(obj: any): Observable<any> {
   return this.http.post<any>(this.rootURI+`/`+this.controllerName+`/Registration`, obj, this.httpOptions);
   
 }
+
  
-Updateuser(obj: any) {
-  return this.http.post(this.rootURI+`/`+this.controllerName +`/UpdateUser`,  obj,  this.httpOptions);
+Updateuser(obj: any): Observable<any>  {
+  return this.http.put(this.rootURI+`/`+this.controllerName +`/UpdateUser`,  obj,  this.httpOptions);
 }
 
 //#endregion

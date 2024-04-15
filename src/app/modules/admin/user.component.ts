@@ -166,14 +166,30 @@ export class UserComponent  {
            address:oFormvalue.address,
          }
 
+         this.UserService.Updateuser(oUser)
+         .subscribe(o => {
+           console.log(o);
+             if (o.message=="2") {
+               debugger;
+                this.CommonService.SaveMessage(`Sucessfully Updated Data `);
+               this.location.back();
+             } else {
+               this.CommonService.ErrorMessage (o.message);
+             }
+         }, o => {
+           this.CommonService.ErrorMessage (`Invalid entry`);
 
-      this._httpclient.put<any>(this.Auth.rootURI +'/user/Updateuser', oUser, this.httpOptions).subscribe(data => {
+         });
+//       this._httpclient.put<any>(this.Auth.rootURI +'/user/Updateuser', oUser, this.httpOptions).subscribe(data => {
         
-        this.CommonService.SaveMessage(`Sucessfully Updated`);
-        this.location.back();
-    // Handle success
-    console.log(data);
-});
+//         this.CommonService.SaveMessage(`Sucessfully Updated`);
+//         this.location.back();
+//     // Handle success
+//     console.log(data);
+// });
+
+
+
       
     } else {
       Object.values(this.validateForm.controls).forEach(control => {

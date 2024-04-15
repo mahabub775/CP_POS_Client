@@ -28,6 +28,7 @@
     "d3-transition": "^3.0.1",
     "d3-zoom": "^3.0.0",
     "dagre-compound": "^0.0.13",
+    "jwt-decode": "^4.0.0",
     "ng-zorro-antd": "^17.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

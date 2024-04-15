@@ -70,9 +70,15 @@ export class AdminlayoutComponent implements  AfterViewInit {
 
 Logout=()=>{
   //debugger;
-  localStorage.removeItem("jwt");
-  localStorage.removeItem("logininfo");
-  this._router.navigateByUrl('/logout');
+  this.Auth.LogOut().subscribe(r => 
+    {
+      console.log(r);
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("logininfo");
+    this._router.navigateByUrl('/logout');
+  })
+
+
 }
 
 changePassword =()=>{

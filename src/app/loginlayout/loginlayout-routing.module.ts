@@ -5,9 +5,11 @@ import {AuthService} from '../core/services/auth.services'
 import { LoginlayoutComponent } from './loginlayout.component';
 
 const routes: Routes = [
- { path: 'admin',   component: AdminlayoutComponent ,   loadChildren: () => import('../modules/admin/admin.module').then(m => m.AdminModule),  canActivate:[AuthService]   },  
-  // { path: 'admin',   children:[ {path:'',loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) }]  },  
- {    path: 'logout', component: LoginlayoutComponent, loadChildren: () => import('./loginlayout.module').then(m => m.LoginlayoutModule)  },
+  { path: '',   component: AdminlayoutComponent ,   loadChildren: () => import('../modules/admin/admin.module').then(m => m.AdminModule)  },  
+
+
+  { path: 'admin',   component: AdminlayoutComponent ,   loadChildren: () => import('../modules/admin/admin.module').then(m => m.AdminModule),  canActivate:[AuthService]   },  
+ {  path: 'logout', component: LoginlayoutComponent, loadChildren: () => import('./loginlayout.module').then(m => m.LoginlayoutModule)  },
 ];
 
 @NgModule({

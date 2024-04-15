@@ -169,32 +169,23 @@ export class UserregistrationComponent  {
             address:oFormvalue.address
           }
 
-          console.log(oUser);
+        //  console.log(oUser);
 
-          this._httpclient.post<any>(this.Auth.rootURI +'/user/Registration', oUser, this.httpOptions).subscribe(data => {
-        
-            this.CommonService.SaveMessage(`Sucessfully Data Saved `);
-            this.location.back();
-        // Handle success
-        console.log(data);
-    });
-          
-      //   this.UserService.Registration(oUser)
-      //   response => {
-      //     this.CommonService.SaveMessage();
-      //     this.location.back();
-      //     // Handle success
-      //     console.log(response);
-      //   },
-      //   error => {
-      //     console.error('Error saving user:', error);
-      //     // Handle error
-      //   }
-      // );
-       
-       
-       
+          this.UserService.Registration(oUser)
+          .subscribe(o => {
+            console.log(o);
+              if (o.message=="1") {
+                debugger;
+                 this.CommonService.SaveMessage(`Sucessfully Data Saved `);
+                this.location.back();
+              } else {
+                this.CommonService.ErrorMessage (o.message);
+              }
+          }, o => {
+            this.CommonService.ErrorMessage (`Invalid entry`);
 
+          });
+    
 
 
     } else {
@@ -206,6 +197,7 @@ export class UserregistrationComponent  {
       });
     }
   }
+
 
   updateConfirmValidator(): void {
     /** wait for refresh value */

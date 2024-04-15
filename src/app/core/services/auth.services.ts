@@ -23,11 +23,13 @@ export class AuthService implements CanActivate {
     const token = localStorage.getItem("jwt");
       if(token && !this.jwthelper.isTokenExpired(token))
       {
+
+
+        
         return true;
       }else{
-       // this.Router.navigate(['mainlayout']);
+        //if validaty exists
         this.Router.navigateByUrl('/admin;');
-         //this.router.navigate(['/', 'users']);   this.router.navigateByUrl('/users;display=verbose/sammy');
         return false;
       }
   }
