@@ -28,8 +28,10 @@ export class LoginlayoutComponent {
   AfterLogin(res:any)
   {
     debugger;
-    if(res=="sucess"){this.IsLoggedIn=true;}
-    //this._router.navigate(['/admin']);
-    this._router.navigateByUrl('/admin');
+    if(res=="sucess")
+    {
+      this.IsLoggedIn=true;
+      this._router.navigateByUrl('/admin');
+     }
   }
 }

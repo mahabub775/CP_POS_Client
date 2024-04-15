@@ -3,7 +3,7 @@ import {JwtHelperService} from'@auth0/angular-jwt'
 import {  CanActivate , Router} from '@angular/router';
 // import { AdminlayoutComponent } from '../admin/adminlayout.component';
 import { Observable } from 'rxjs';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 //import { NavmainmenuComponent } from '../admin/chayapath/navmainmenu/navmainmenu.component';
 @Injectable()
@@ -13,7 +13,7 @@ export class AuthService implements CanActivate {
 
  readonly rootURI =  'https://localhost:7164/api'; 
  oLoggedInUser:any;
-  constructor( private  Router :Router,  public  jwthelper  :JwtHelperService  ) 
+  constructor( private  Router :Router,  public  jwthelper  :JwtHelperService,  private http: HttpClient  ) 
   { 
   }
 
@@ -44,11 +44,13 @@ export class AuthService implements CanActivate {
      return this.oLoggedInUser?  JSON.parse(this.oLoggedInUser):null;
   }
 // //#region  Login
-// Login(oUser: any  ) {
-//   debugger;
-//   return this.http.post(this.rootURI+'/Auth/Login/',oUser);
-// }
-// //#endregion
+LogIn(userId :any, password :any) {
+  let obj = { userName: userId, password: password };
+  return this.http.post(this.rootURI+"/Auth/Login", obj, { observe: 'response' })
+}
+LogOut() {
+  return this.http.get(this.rootURI+"/Auth/Logout", { observe: 'response' });
+}
 
 // LogOut(){
 //   return this.http.get(this.rootURI+`/Auth/GetLogout`);

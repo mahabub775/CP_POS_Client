@@ -51,7 +51,7 @@ export class ChangePasswordComponent {
       this.commonService.ErrorMessage('New password and confirm password must match');
       return;
     }
-    if(this.Auth.GetuserLoginInfo()!=null) {
+    if(this.Auth.GetuserLoginInfo()==null) {
       this.commonService.ErrorMessage('Invalid Logged In user');
       return;  
     }

@@ -64,17 +64,6 @@ export class UsersComponent {
       }
     );
 
-
-
-    //  this._httpclient.get(this.Auth.rootURI+'/User/Gets',this.httpOptions ).subscribe(respons =>{
-    //   debugger;
-    //   this.listOfData =(<any>respons)
-    // },err=>{
-    //   debugger;
-    //   console.log(err);
-    //   alert(err.statusText); 
-    // }
-    // );
       
     }
 
@@ -82,12 +71,9 @@ export class UsersComponent {
   
 
   NewUser(){  
-    //this.router.navigate(['/user', id]);
-    
-    //this.router.navigate(['userreg']);
+
     this.router.navigateByUrl('admin/userreg');
     
-    //this.router.navigate(['test']);
     console.log(this.router.url);
     
     
