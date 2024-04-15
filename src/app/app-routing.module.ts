@@ -1,14 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
-import { MainlayoutComponent } from './layouts/mainlayout/mainlayout.component';
 import { LoginComponent } from './login.component';
-import {AuthService} from './core/services/auth.services'
-import { AppComponent } from './app.component';
+
+import { LoginlayoutComponent } from './loginlayout/loginlayout.component';
+import { AdminlayoutComponent } from './modules/admin/adminlayout.component';
 const routes: Routes = [ 
-  { path: '',   component:AppComponent },  
-  { path: 'mainlayout',   component:MainlayoutComponent ,   children:[ {path:'',loadChildren: () => import('./layouts/mainlayout/mainlayout.module').then(m => m.MainlayoutModule) }]  },  
-  
-  // {path: 'admin', component: AdminlayoutComponent, loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)}
+  {
+    path: '', component: LoginlayoutComponent, loadChildren: () => import('./loginlayout/loginlayout.module').then(m => m.LoginlayoutModule)
+  },
+
+  { path: 'login', component: LoginComponent }
+
+  //    { path: 'userprofile/:type' , component: UserprofileComponent},
+  //{ path:'resetpass/:userid' , component: ResetPasswordComponent},
+  // {
+  //   path: 'admin', component: AdminlayoutComponent, loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
+  // }
+
+
 ];
 
 @NgModule({

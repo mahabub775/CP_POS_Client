@@ -84,7 +84,8 @@ export class UsersComponent {
   NewUser(){  
     //this.router.navigate(['/user', id]);
     
-    this.router.navigate(['/mainlayout/admin/userreg']);
+    //this.router.navigate(['userreg']);
+    this.router.navigateByUrl('admin/userreg');
     
     //this.router.navigate(['test']);
     console.log(this.router.url);
@@ -108,7 +109,7 @@ export class UsersComponent {
 
   Edit(userId:string){
     //this.router.navigate(['/user', userId]);
-    this.router.navigate(['/mainlayout/admin/user',userId]);
+    this.router.navigate(['admin/user',userId]);
   }
 
 }

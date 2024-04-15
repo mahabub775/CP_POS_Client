@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import {AuthService} from '../../core/services/auth.services';
 
 @Component({
-  selector: 'app-mainlayout',
-  templateUrl: './mainlayout.component.html',
+  selector: 'app-adminlayout',
+  templateUrl: './adminlayout.component.html',
   styles: ` .trigger {
     font-size: 18px;
     line-height: 64px;
@@ -52,7 +52,7 @@ import {AuthService} from '../../core/services/auth.services';
     text-align: center;
   } `
 })
-export class MainlayoutComponent implements  AfterViewInit {
+export class AdminlayoutComponent implements  AfterViewInit {
 
   isCollapsed = false;
   public IsLoggedIn = false;
@@ -70,15 +70,14 @@ export class MainlayoutComponent implements  AfterViewInit {
 
 Logout=()=>{
   //debugger;
-  //alert("It works");
   localStorage.removeItem("jwt");
   localStorage.removeItem("logininfo");
-  this._router.navigate(['/']);
+  this._router.navigateByUrl('/logout');
 }
 
 changePassword =()=>{
   
-  this._router.navigate(['/changepass']);
+  this._router.navigate(['admin/changepass']);
 }
 
 }

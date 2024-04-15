@@ -96,7 +96,7 @@ export class LoginComponent implements OnInit {
   submitForm(): void {
     if (this.validateForm.valid) 
     {
-      //console.log('submit', this.validateForm.value);
+
       this.isLoading = true;
       var oLoginObject  = {userName:this.validateForm.value.userName, password:this.validateForm.value.password}; 
       this._httpclient.post(this.Authservice.rootURI+'/Auth/Login',oLoginObject).subscribe(respons =>{

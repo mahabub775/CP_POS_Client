@@ -19,13 +19,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import {AuthService} from './core/services/auth.services'
-import { LoginComponent } from './login.component';
+
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NgZorroControlsdModule  } from './ng.zorro.controls.module';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 registerLocaleData(en);
 
@@ -39,8 +40,8 @@ return localStorage.getItem("jwt");
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LoginComponent
+    AppComponent
+   
   ],
   imports: [
     CommonModule,
@@ -67,7 +68,9 @@ return localStorage.getItem("jwt");
         disallowedRoutes:[],
         authScheme: "Bearer "
       }
-    })
+    }),
+  
+    NzLayoutModule
     //BrowserAnimationsModule
   ],
   providers: [AuthService, { provide: NZ_I18N, useValue: en_US }, { provide: NZ_ICONS, useValue: icons }],

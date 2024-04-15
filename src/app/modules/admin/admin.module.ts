@@ -15,8 +15,10 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { UsersComponent } from './users.component';
 import { UserregistrationComponent } from './userregistration.component';
 import { UserComponent } from './user.component';
-import { ChangePasswordComponent } from '../../layouts/mainlayout/change-password.component';
+
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { AdminlayoutComponent } from './adminlayout.component';
+import { ChangePasswordComponent } from './change-password.component';
 registerLocaleData(en);
 
 const antDesignIcons = AllIcons as {
@@ -30,6 +32,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     UsersComponent,
     UserregistrationComponent,
     UserComponent,
+    AdminlayoutComponent,
     ChangePasswordComponent
   ],
   imports: [

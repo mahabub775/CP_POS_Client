@@ -28,7 +28,7 @@ import { HttpClient } from '@angular/common/http';
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-control [nzOffset]="8" [nzSpan]="16">
+    <nz-form-control [nzOffset]="8" [nzSpan]="6">
       <button nz-button nzType="primary" nzBlock type="submit">Change Password</button>
     </nz-form-control>
   </nz-form-item>
